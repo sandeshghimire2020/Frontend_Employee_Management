@@ -12,10 +12,22 @@ export default class ListEmployeeComponent extends Component {
             // this.addEmployee = addEmployee.bind(this);
             this.addEmployee = this.addEmployee.bind(this);
             this.editEmployee = this.editEmployee.bind(this);
+            this.deleteEmployee = this.deleteEmployee.bind(this);
+            this.viewEmployee = this.viewEmployee.bind(this);
           }  
         editEmployee(id){
             this.props.history.push(`/createEmployee/${id}`);
             
+        }
+        viewEmployee(id){
+            this.props.history.push(`/viewEmployee/${id}`);
+        }
+
+        deleteEmployee(id){
+            EmployeeService.deleteEmployee(id).then( res => {
+                this.setState({ employees: this.state.employees.filter( employee => employee.id !== id)});
+            });
+            // this.props.history.push(`/deleteEmployee/${id}`);
         }
          
 
@@ -51,7 +63,6 @@ export default class ListEmployeeComponent extends Component {
                                 <th> Employee Last Name </th>
                                 <th> Employee Email Id </th>
                                 <th> Action </th>
-
                             </tr>
                           
                         </thead>
@@ -65,7 +76,9 @@ export default class ListEmployeeComponent extends Component {
                                         <td> {employee.lastName} </td>
                                         <td> {employee.emailId} </td>
                                         <td>  
-                                         <button onClick={() => this.editEmployee(employee.id)} className='btn btn-info'>Update</button>   
+                                         <button onClick={() => this.editEmployee(employee.id)} className='btn btn-info'>Update</button>
+                                         <button style={{marginLeft: "10px"}} onClick={() => this.deleteEmployee(employee.id)} className='btn btn-danger'>  Delete</button>    
+                                         <button style={{marginLeft: "10px"}} onClick={() => this.viewEmployee(employee.id)} className='btn btn-primary'>View</button>
                                          </td>
                                         <td>  </td>
                                     </tr>
