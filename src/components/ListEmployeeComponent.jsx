@@ -14,7 +14,7 @@ export default class ListEmployeeComponent extends Component {
             this.editEmployee = this.editEmployee.bind(this);
           }  
         editEmployee(id){
-            this.props.history.push(`/updateEmployee/${id}`);
+            this.props.history.push(`/createEmployee/${id}`);
             
         }
          
@@ -26,7 +26,7 @@ export default class ListEmployeeComponent extends Component {
           }
 
           addEmployee(){
-            this.props.history.push('./createEmployee');
+            this.props.history.push('./createEmployee/-1');
           }
 
           //comment

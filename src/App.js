@@ -4,7 +4,7 @@ import ListEmployeeComponent from './components/ListEmployeeComponent';
 import HeaderComponent from './components/HeaderComponent';
 import FooterComponent from './components/FooterComponent';
 import createEmployee from './components/createEmployee';
-import UpdateEmployeeComponent from './components/UpdateEmployeeComponent';
+
 
 
 
@@ -21,8 +21,8 @@ function App() {
               <Switch>
                 <Route exact path = "/" component={ListEmployeeComponent} />
                 <Route path = "/employees" component={ListEmployeeComponent} />
-                <Route path = "/createEmployee" component={createEmployee} />
-                <Route path = "/updateEmployee/:id" component={UpdateEmployeeComponent} />
+                <Route path = "/createEmployee/:id" component={createEmployee} />
+                {/* <Route path = "/updateEmployee/:id" component={UpdateEmployeeComponent} /> */}
                 {/* <ListEmployeeComponent /> */}
               </Switch>
            </div>
