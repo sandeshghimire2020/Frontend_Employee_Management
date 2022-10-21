@@ -11,8 +11,12 @@ export default class ListEmployeeComponent extends Component {
 
             // this.addEmployee = addEmployee.bind(this);
             this.addEmployee = this.addEmployee.bind(this);
+            this.editEmployee = this.editEmployee.bind(this);
           }  
-
+        editEmployee(id){
+            this.props.history.push(`/updateEmployee/${id}`);
+            
+        }
          
 
           componentDidMount(){
@@ -34,7 +38,10 @@ export default class ListEmployeeComponent extends Component {
             <br></br>
             <div className='row'>
                 <button className='btn btn-primary' onClick={this.addEmployee}>Add Employee</button>
+                
             </div>
+            <br></br>
+               
             <div className="row">
                     <table className = "table table-striped table-bordered">
                         <thead>
@@ -57,6 +64,9 @@ export default class ListEmployeeComponent extends Component {
                                         <td> {employee.firstName} </td>
                                         <td> {employee.lastName} </td>
                                         <td> {employee.emailId} </td>
+                                        <td>  
+                                         <button onClick={() => this.editEmployee(employee.id)} className='btn btn-info'>Update</button>   
+                                         </td>
                                         <td>  </td>
                                     </tr>
                                 )
